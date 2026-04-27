@@ -23,10 +23,7 @@ python voxcpm2_speech.py "你好" --api-base http://your-server:8000
 如需自行部署服务器，可参考以下命令：
 
 ```bash
-python -m vllm_omni.entrypoints.openai.api_server \
-    --model openbmb/VoxCPM2 \
-    --stage-configs-path vllm_omni/model_executor/stage_configs/voxcpm2.yaml \
-    --host 0.0.0.0 --port 8000
+vllm serve openbmb/VoxCPM2 --omni --host 0.0.0.0 --port 8000
 ```
 
 ## 安装
@@ -80,7 +77,7 @@ python voxcpm2_speech.py "测试" --api-base http://your-server:8000
 ```bash
 curl -X POST http://localhost:8000/v1/audio/speech \
   -H "Content-Type: application/json" \
-  -d '{"model": "voxcpm2", "input": "Hello, this is VoxCPM2.", "voice": "default"}' \
+  -d '{"model": "voxcpm2", "input": "Hello, this is VoxCPM2.", "voice": "default", "stream": true}' \
   --output output.wav
 ```
 
