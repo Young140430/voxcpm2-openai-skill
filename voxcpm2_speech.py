@@ -56,7 +56,7 @@ import httpx  # noqa: E402
 # ── Defaults ──────────────────────────────────────────────────
 DEFAULT_API_BASE = "http://localhost:8000"
 DEFAULT_API_KEY = "sk-empty"
-DEFAULT_MODEL = "voxcpm2"
+DEFAULT_MODEL = "/home/ubuntu/OpenBMB/VoxCPM2"
 DEFAULT_RESPONSE_FORMAT = "wav"
 DEFAULT_OUTPUT = "output.wav"
 
@@ -98,6 +98,7 @@ def generate_speech(
         "input": text,
         "voice": "default",
         "response_format": response_format,
+        "stream": True,
     }
 
     if ref_audio:
